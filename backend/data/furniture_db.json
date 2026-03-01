@@ -8,8 +8,8 @@
     "depth": 210,
     "height": 40,
     "style_tags": ["minimal", "nordic"],
-    "price": 320,
-    "amazon_url": "https://www.amazon.com/s?k=nordic+minimal+bed+frame",
+    "price": 329,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.95
   },
   {
@@ -21,12 +21,25 @@
     "depth": 220,
     "height": 35,
     "style_tags": ["modern", "minimal"],
-    "price": 480,
-    "amazon_url": "https://www.amazon.com/s?k=modern+platform+bed",
+    "price": 489,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.9
   },
   {
-    "id": "wardrobe_01",
+    "id": "bed_upholstered_01",
+    "name": "Upholstered Velvet Bed",
+    "category": "bed",
+    "room_type": "bedroom",
+    "width": 160,
+    "depth": 215,
+    "height": 120,
+    "style_tags": ["modern"],
+    "price": 699,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
+    "priority_score": 0.82
+  },
+  {
+    "id": "wardrobe_slim_01",
     "name": "Slim 2-Door Wardrobe",
     "category": "wardrobe",
     "room_type": "bedroom",
@@ -34,8 +47,8 @@
     "depth": 55,
     "height": 200,
     "style_tags": ["minimal", "modern"],
-    "price": 250,
-    "amazon_url": "https://www.amazon.com/s?k=slim+2+door+wardrobe",
+    "price": 259,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.85
   },
   {
@@ -47,9 +60,22 @@
     "depth": 58,
     "height": 195,
     "style_tags": ["nordic", "minimal"],
-    "price": 380,
-    "amazon_url": "https://www.amazon.com/s?k=nordic+oak+wardrobe",
+    "price": 389,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.8
+  },
+  {
+    "id": "wardrobe_sliding_01",
+    "name": "Sliding Door Wardrobe",
+    "category": "wardrobe",
+    "room_type": "bedroom",
+    "width": 150,
+    "depth": 60,
+    "height": 210,
+    "style_tags": ["modern"],
+    "price": 520,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
+    "priority_score": 0.78
   },
   {
     "id": "desk_minimal_01",
@@ -60,8 +86,8 @@
     "depth": 60,
     "height": 75,
     "style_tags": ["minimal", "modern"],
-    "price": 150,
-    "amazon_url": "https://www.amazon.com/s?k=minimal+writing+desk",
+    "price": 149,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.75
   },
   {
@@ -73,9 +99,22 @@
     "depth": 65,
     "height": 75,
     "style_tags": ["nordic"],
-    "price": 220,
-    "amazon_url": "https://www.amazon.com/s?k=nordic+solid+wood+desk",
+    "price": 229,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.7
+  },
+  {
+    "id": "desk_standing_01",
+    "name": "Electric Standing Desk",
+    "category": "desk",
+    "room_type": "bedroom",
+    "width": 140,
+    "depth": 70,
+    "height": 75,
+    "style_tags": ["modern"],
+    "price": 399,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
+    "priority_score": 0.72
   },
   {
     "id": "sofa_minimal_01",
@@ -86,8 +125,8 @@
     "depth": 90,
     "height": 80,
     "style_tags": ["minimal", "modern"],
-    "price": 550,
-    "amazon_url": "https://www.amazon.com/s?k=3+seater+minimal+sofa",
+    "price": 559,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.95
   },
   {
@@ -99,12 +138,25 @@
     "depth": 85,
     "height": 75,
     "style_tags": ["nordic", "minimal"],
-    "price": 680,
-    "amazon_url": "https://www.amazon.com/s?k=nordic+fabric+sofa",
+    "price": 689,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.9
   },
   {
-    "id": "coffee_table_01",
+    "id": "sofa_sectional_01",
+    "name": "L-Shape Sectional Sofa",
+    "category": "sofa",
+    "room_type": "living_room",
+    "width": 280,
+    "depth": 160,
+    "height": 85,
+    "style_tags": ["modern"],
+    "price": 999,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
+    "priority_score": 0.88
+  },
+  {
+    "id": "coffee_table_round_01",
     "name": "Round Coffee Table",
     "category": "coffee_table",
     "room_type": "living_room",
@@ -112,12 +164,12 @@
     "depth": 80,
     "height": 45,
     "style_tags": ["minimal", "nordic"],
-    "price": 120,
-    "amazon_url": "https://www.amazon.com/s?k=round+coffee+table+minimal",
+    "price": 119,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.8
   },
   {
-    "id": "coffee_table_modern_01",
+    "id": "coffee_table_marble_01",
     "name": "Modern Marble Coffee Table",
     "category": "coffee_table",
     "room_type": "living_room",
@@ -125,12 +177,25 @@
     "depth": 60,
     "height": 40,
     "style_tags": ["modern"],
-    "price": 200,
-    "amazon_url": "https://www.amazon.com/s?k=modern+marble+coffee+table",
+    "price": 209,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.75
   },
   {
-    "id": "tv_stand_01",
+    "id": "coffee_table_nest_01",
+    "name": "Nesting Side Table Set",
+    "category": "coffee_table",
+    "room_type": "living_room",
+    "width": 55,
+    "depth": 55,
+    "height": 50,
+    "style_tags": ["nordic", "minimal"],
+    "price": 89,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
+    "priority_score": 0.72
+  },
+  {
+    "id": "tv_stand_low_01",
     "name": "Low Profile TV Stand",
     "category": "tv_stand",
     "room_type": "living_room",
@@ -138,8 +203,8 @@
     "depth": 40,
     "height": 50,
     "style_tags": ["minimal", "modern"],
-    "price": 180,
-    "amazon_url": "https://www.amazon.com/s?k=low+profile+tv+stand",
+    "price": 189,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.85
   },
   {
@@ -151,12 +216,25 @@
     "depth": 40,
     "height": 55,
     "style_tags": ["nordic"],
-    "price": 240,
-    "amazon_url": "https://www.amazon.com/s?k=nordic+wood+tv+console",
+    "price": 249,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.8
   },
   {
-    "id": "bookshelf_01",
+    "id": "tv_stand_floating_01",
+    "name": "Floating Wall TV Unit",
+    "category": "tv_stand",
+    "room_type": "living_room",
+    "width": 180,
+    "depth": 35,
+    "height": 45,
+    "style_tags": ["modern", "minimal"],
+    "price": 299,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
+    "priority_score": 0.82
+  },
+  {
+    "id": "bookshelf_tall_01",
     "name": "Tall Floating Bookshelf",
     "category": "bookshelf",
     "room_type": "universal",
@@ -164,8 +242,8 @@
     "depth": 30,
     "height": 180,
     "style_tags": ["minimal", "modern", "nordic"],
-    "price": 90,
-    "amazon_url": "https://www.amazon.com/s?k=tall+floating+bookshelf",
+    "price": 89,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.65
   },
   {
@@ -177,12 +255,25 @@
     "depth": 35,
     "height": 175,
     "style_tags": ["nordic", "minimal"],
-    "price": 140,
-    "amazon_url": "https://www.amazon.com/s?k=wide+5+shelf+bookcase",
+    "price": 139,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.6
   },
   {
-    "id": "floor_lamp_01",
+    "id": "bookshelf_ladder_01",
+    "name": "Ladder Leaning Shelf",
+    "category": "bookshelf",
+    "room_type": "universal",
+    "width": 60,
+    "depth": 38,
+    "height": 170,
+    "style_tags": ["modern", "minimal"],
+    "price": 79,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
+    "priority_score": 0.58
+  },
+  {
+    "id": "lamp_arc_01",
     "name": "Minimal Arc Floor Lamp",
     "category": "lamp",
     "room_type": "universal",
@@ -190,12 +281,12 @@
     "depth": 40,
     "height": 160,
     "style_tags": ["minimal", "modern"],
-    "price": 75,
-    "amazon_url": "https://www.amazon.com/s?k=minimal+arc+floor+lamp",
+    "price": 79,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.5
   },
   {
-    "id": "floor_lamp_nordic_01",
+    "id": "lamp_tripod_01",
     "name": "Nordic Tripod Floor Lamp",
     "category": "lamp",
     "room_type": "universal",
@@ -203,8 +294,21 @@
     "depth": 45,
     "height": 155,
     "style_tags": ["nordic"],
-    "price": 95,
-    "amazon_url": "https://www.amazon.com/s?k=nordic+tripod+floor+lamp",
+    "price": 99,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
     "priority_score": 0.48
+  },
+  {
+    "id": "lamp_pendant_01",
+    "name": "Modern LED Floor Lamp",
+    "category": "lamp",
+    "room_type": "universal",
+    "width": 35,
+    "depth": 35,
+    "height": 150,
+    "style_tags": ["modern"],
+    "price": 129,
+    "amazon_url": "https://a.co/d/0gHy6RR2",
+    "priority_score": 0.52
   }
 ]
