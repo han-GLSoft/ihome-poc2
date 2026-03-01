@@ -1,42 +1,39 @@
-import { useRef } from 'react';
-import type { Mesh } from 'three';
 import type { Room } from '../types/furniture';
 
-const CM = 0.01; // cm → meters
+const CM = 0.01;
 
-interface RoomBoxProps {
-  room: Room;
-}
-
-export default function RoomBox({ room }: RoomBoxProps) {
-  const floorRef = useRef<Mesh>(null);
-
+export default function RoomBox({ room }: { room: Room }) {
   const w = room.width * CM;
   const d = room.depth * CM;
   const h = room.height * CM;
 
   return (
     <group>
-      {/* Floor */}
-      <mesh ref={floorRef} position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      {/* Floor — subtle dark surface */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
         <planeGeometry args={[w, d]} />
-        <meshStandardMaterial color="#1e2235" roughness={0.9} metalness={0.1} />
+        <meshStandardMaterial color="#131C30" roughness={0.95} metalness={0.05} />
       </mesh>
 
-      {/* Room wireframe outline box */}
+      {/* Room wireframe */}
       <mesh position={[0, h / 2, 0]}>
         <boxGeometry args={[w, h, d]} />
         <meshStandardMaterial
-          color="#3d4a7a"
+          color="#6366F1"
           wireframe
           transparent
-          opacity={0.4}
+          opacity={0.18}
         />
       </mesh>
 
       {/* Floor grid */}
       <gridHelper
-        args={[Math.max(w, d), Math.round(Math.max(room.width, room.depth) / 50), '#2d3a5e', '#242d4e']}
+        args={[
+          Math.max(w, d),
+          Math.round(Math.max(room.width, room.depth) / 50),
+          '#1E293B',
+          '#1A2540',
+        ]}
         position={[0, 0.001, 0]}
       />
     </group>

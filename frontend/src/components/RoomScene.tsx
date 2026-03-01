@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment, GizmoHelper, GizmoViewport } from '@react-three/drei';
+import { OrbitControls, GizmoHelper, GizmoViewport } from '@react-three/drei';
 import RoomBox from './RoomBox';
 import FurnitureBox from './FurnitureBox';
 import type { FurnitureItem, Room } from '../types/furniture';
@@ -9,40 +9,49 @@ interface RoomSceneProps {
   room: Room;
   furniture: FurnitureItem[];
   selectedId?: string;
-  onSelectFurniture: (item: FurnitureItem) => void;
+  onSelectFurniture: (item: FurnitureItem | null) => void;
 }
 
 const CM = 0.01;
 
 export default function RoomScene({ room, furniture, selectedId, onSelectFurniture }: RoomSceneProps) {
-  const camDistance = Math.max(room.width, room.depth) * CM * 1.4;
+  const camDist = Math.max(room.width, room.depth) * CM * 1.5;
 
   return (
-    <div className="flex-1 h-full relative">
+    <div className="w-full h-full" style={{ background: '#0A0D1A' }}>
       <Canvas
         shadows
-        camera={{
-          position: [camDistance, camDistance * 0.8, camDistance],
-          fov: 50,
-          near: 0.1,
-          far: 100,
-        }}
-        onPointerMissed={() => onSelectFurniture(null as unknown as FurnitureItem)}
-        gl={{ antialias: true }}
+        camera={{ position: [camDist, camDist * 0.75, camDist], fov: 48, near: 0.05, far: 200 }}
+        onPointerMissed={() => onSelectFurniture(null)}
+        gl={{ antialias: true, alpha: false }}
       >
         <Suspense fallback={null}>
-          {/* Lighting */}
-          <ambientLight intensity={0.6} />
-          <directionalLight
-            position={[5, 8, 5]}
-            intensity={1.2}
-            castShadow
-            shadow-mapSize={[2048, 2048]}
-          />
-          <directionalLight position={[-3, 4, -3]} intensity={0.4} color="#8888ff" />
-          <Environment preset="city" />
+          {/* Ambient */}
+          <ambientLight intensity={0.5} color="#C8D8FF" />
 
-          {/* Room */}
+          {/* Key light */}
+          <directionalLight
+            position={[6, 10, 6]}
+            intensity={1.4}
+            castShadow
+            shadow-mapSize-width={2048}
+            shadow-mapSize-height={2048}
+            shadow-camera-near={0.5}
+            shadow-camera-far={50}
+            shadow-camera-left={-10}
+            shadow-camera-right={10}
+            shadow-camera-top={10}
+            shadow-camera-bottom={-10}
+            color="#FFFFFF"
+          />
+
+          {/* Fill light */}
+          <directionalLight position={[-4, 3, -4]} intensity={0.3} color="#8899FF" />
+
+          {/* Rim light */}
+          <directionalLight position={[0, 6, -8]} intensity={0.2} color="#AABBFF" />
+
+          {/* Room wireframe + floor */}
           <RoomBox room={room} />
 
           {/* Furniture */}
@@ -55,32 +64,32 @@ export default function RoomScene({ room, furniture, selectedId, onSelectFurnitu
             />
           ))}
 
-          {/* Controls */}
           <OrbitControls
             makeDefault
-            maxPolarAngle={Math.PI / 2}
-            minDistance={1}
-            maxDistance={20}
+            maxPolarAngle={Math.PI / 2.05}
+            minDistance={0.5}
+            maxDistance={25}
+            enableDamping
+            dampingFactor={0.08}
           />
 
-          {/* Corner gizmo */}
-          <GizmoHelper alignment="bottom-right" margin={[70, 70]}>
+          <GizmoHelper alignment="bottom-right" margin={[64, 64]}>
             <GizmoViewport labelColor="white" axisHeadScale={1} />
           </GizmoHelper>
         </Suspense>
       </Canvas>
 
-      {/* Empty state overlay */}
-      {furniture.length === 0 && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <p className="text-5xl mb-4 opacity-30">🛋️</p>
-          <p className="text-slate-500 text-sm">設定房間參數並點擊「生成 AI 家具方案」</p>
-        </div>
-      )}
-
-      {/* Hint */}
+      {/* Interaction hint */}
       {furniture.length > 0 && !selectedId && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur px-4 py-2 rounded-full text-xs text-slate-300 pointer-events-none">
+        <div
+          className="absolute bottom-24 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-xs pointer-events-none font-cinzel tracking-widest"
+          style={{
+            background: 'rgba(15,23,42,0.8)',
+            border: '1px solid rgba(255,255,255,0.06)',
+            color: '#475569',
+            backdropFilter: 'blur(8px)',
+          }}
+        >
           點擊家具查看詳情 · 拖曳旋轉 · 滾輪縮放
         </div>
       )}

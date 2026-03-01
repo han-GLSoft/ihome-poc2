@@ -7,34 +7,34 @@ import type { FurnitureItem } from '../types/furniture';
 const CM = 0.01;
 
 const CATEGORY_COLORS: Record<string, string> = {
-  bed: '#7c6fa0',
-  wardrobe: '#5a7a8a',
-  desk: '#6b8a6b',
-  sofa: '#8a6b5a',
-  coffee_table: '#7a7a5a',
-  tv_stand: '#5a6b8a',
-  bookshelf: '#8a7a5a',
-  lamp: '#9a8a5a',
+  bed:          '#7C6FA0',
+  wardrobe:     '#5A7A8A',
+  desk:         '#6B8A6B',
+  sofa:         '#8A6B5A',
+  coffee_table: '#7A7A5A',
+  tv_stand:     '#5A6B8A',
+  bookshelf:    '#8A7A5A',
+  lamp:         '#9A8A5A',
 };
 
 const CATEGORY_LABELS: Record<string, string> = {
-  bed: 'Bed',
-  wardrobe: 'Wardrobe',
-  desk: 'Desk',
-  sofa: 'Sofa',
+  bed:          'Bed',
+  wardrobe:     'Wardrobe',
+  desk:         'Desk',
+  sofa:         'Sofa',
   coffee_table: 'Coffee Table',
-  tv_stand: 'TV Stand',
-  bookshelf: 'Bookshelf',
-  lamp: 'Lamp',
+  tv_stand:     'TV Stand',
+  bookshelf:    'Bookshelf',
+  lamp:         'Lamp',
 };
 
-interface FurnitureBoxProps {
+interface Props {
   item: FurnitureItem;
   onClick: (item: FurnitureItem) => void;
   isSelected: boolean;
 }
 
-export default function FurnitureBox({ item, onClick, isSelected }: FurnitureBoxProps) {
+export default function FurnitureBox({ item, onClick, isSelected }: Props) {
   const meshRef = useRef<Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
@@ -43,15 +43,15 @@ export default function FurnitureBox({ item, onClick, isSelected }: FurnitureBox
   const h = item.height * CM;
   const x = item.x ?? 0;
   const z = item.z ?? 0;
-  const y = h / 2; // sit on floor
+  const y = h / 2;
 
-  const baseColor = CATEGORY_COLORS[item.category] ?? '#6b7280';
+  const base = CATEGORY_COLORS[item.category] ?? '#6B7280';
 
   useFrame(() => {
     if (!meshRef.current) return;
-    const target = isSelected ? 1.06 : hovered ? 1.03 : 1;
+    const target = isSelected ? 1.04 : hovered ? 1.02 : 1;
     meshRef.current.scale.setScalar(
-      meshRef.current.scale.x + (target - meshRef.current.scale.x) * 0.15
+      meshRef.current.scale.x + (target - meshRef.current.scale.x) * 0.12,
     );
   });
 
@@ -67,27 +67,29 @@ export default function FurnitureBox({ item, onClick, isSelected }: FurnitureBox
       >
         <boxGeometry args={[w, h, d]} />
         <meshStandardMaterial
-          color={isSelected ? '#818cf8' : hovered ? '#a5b4fc' : baseColor}
-          roughness={0.6}
-          metalness={0.1}
+          color={isSelected ? '#818CF8' : hovered ? '#A5B4FC' : base}
+          roughness={isSelected ? 0.3 : 0.65}
+          metalness={isSelected ? 0.3 : 0.05}
           transparent
-          opacity={isSelected ? 1 : 0.88}
+          opacity={isSelected ? 1 : 0.9}
+          emissive={isSelected ? '#4F46E5' : '#000000'}
+          emissiveIntensity={isSelected ? 0.15 : 0}
         />
       </mesh>
 
-      {/* Top edge outline when selected */}
+      {/* Selected outline */}
       {isSelected && (
-        <mesh position={[0, 0, 0]}>
-          <boxGeometry args={[w + 0.02, h + 0.02, d + 0.02]} />
-          <meshStandardMaterial color="#818cf8" wireframe />
+        <mesh>
+          <boxGeometry args={[w + 0.015, h + 0.015, d + 0.015]} />
+          <meshStandardMaterial color="#6366F1" wireframe transparent opacity={0.6} />
         </mesh>
       )}
 
-      {/* Category label */}
+      {/* Label */}
       <Text
-        position={[0, h / 2 + 0.12, 0]}
-        fontSize={0.12}
-        color={hovered || isSelected ? '#e0e7ff' : '#94a3b8'}
+        position={[0, h / 2 + 0.1, 0]}
+        fontSize={0.1}
+        color={isSelected ? '#E0E7FF' : hovered ? '#CBD5E1' : '#64748B'}
         anchorX="center"
         anchorY="bottom"
         renderOrder={1}

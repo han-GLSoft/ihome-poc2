@@ -1,21 +1,93 @@
 @import "tailwindcss";
 
+/* ── Design System: iHome AI ─────────────────────────────────── */
+/* Colors: bg #0F172A · primary #1E293B · secondary #334155       */
+/* CTA: #22C55E · text #F8FAFC                                    */
+/* Fonts: Cinzel (headings) · Josefin Sans (body)                 */
+/* ────────────────────────────────────────────────────────────── */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background-color: #0f1117;
-  color: #e2e8f0;
-  min-height: 100vh;
+:root {
+  --bg:         #0F172A;
+  --surface:    #1E293B;
+  --surface-2:  #334155;
+  --border:     rgba(255,255,255,0.08);
+  --cta:        #22C55E;
+  --cta-hover:  #16A34A;
+  --text:       #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-dim:   #475569;
+  --indigo:     #6366F1;
+  --indigo-dim: rgba(99,102,241,0.15);
+}
+
+html, body, #root {
+  height: 100%;
   overflow: hidden;
+}
+
+body {
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, .font-cinzel {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.04em;
 }
 
 #root {
   width: 100vw;
-  height: 100vh;
   display: flex;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar        { width: 4px; height: 4px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--surface-2); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+/* Smooth transitions on interactive elements */
+button, a { transition: all 180ms ease; cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+
+/* Range slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 3px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.15);
+  transition: box-shadow 150ms ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.2);
+}
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.4);
+}
+
+/* Glass card */
+.glass {
+  background: rgba(30,41,59,0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
 }
