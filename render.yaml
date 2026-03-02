@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: ihome-poc2
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
