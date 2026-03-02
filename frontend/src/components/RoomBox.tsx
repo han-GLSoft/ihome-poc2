@@ -9,10 +9,10 @@ export default function RoomBox({ room }: { room: Room }) {
 
   return (
     <group>
-      {/* Floor — subtle dark surface */}
+      {/* Floor */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
         <planeGeometry args={[w, d]} />
-        <meshStandardMaterial color="#131C30" roughness={0.95} metalness={0.05} />
+        <meshStandardMaterial color="#2A3F61" roughness={0.9} metalness={0.06} />
       </mesh>
 
       {/* Room wireframe */}
@@ -31,8 +31,8 @@ export default function RoomBox({ room }: { room: Room }) {
         args={[
           Math.max(w, d),
           Math.round(Math.max(room.width, room.depth) / 50),
-          '#1E293B',
-          '#1A2540',
+          '#4C6386',
+          '#3C5377',
         ]}
         position={[0, 0.001, 0]}
       />

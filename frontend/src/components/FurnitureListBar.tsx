@@ -43,8 +43,8 @@ export default function FurnitureListBar({ furniture, selectedId, onSelect }: Fu
       <div
         className="flex items-center justify-between px-4 py-2"
         style={{
-          background: 'rgba(15,23,42,0.85)',
-          borderTop: '1px solid rgba(255,255,255,0.06)',
+          background: 'rgba(33,52,82,0.88)',
+          borderTop: '1px solid rgba(255,255,255,0.12)',
         }}
       >
         <div className="flex items-center gap-2">
@@ -79,7 +79,7 @@ export default function FurnitureListBar({ furniture, selectedId, onSelect }: Fu
       {/* Cards row */}
       <div
         className="flex gap-2 overflow-x-auto px-3 py-2.5"
-        style={{ background: 'rgba(15,23,42,0.75)' }}
+        style={{ background: 'rgba(33,52,82,0.8)' }}
       >
         {furniture.map((item, idx) => {
           const isSelected = item.id === selectedId;
@@ -95,10 +95,10 @@ export default function FurnitureListBar({ furniture, selectedId, onSelect }: Fu
                 minWidth: 170,
                 background: isSelected
                   ? 'rgba(99,102,241,0.2)'
-                  : 'rgba(30,41,59,0.8)',
+                  : 'rgba(56,76,108,0.82)',
                 border: isSelected
                   ? '1px solid rgba(99,102,241,0.5)'
-                  : '1px solid rgba(255,255,255,0.06)',
+                  : '1px solid rgba(255,255,255,0.1)',
                 boxShadow: isSelected ? '0 0 12px rgba(99,102,241,0.15)' : 'none',
                 transition: 'all 180ms ease',
               }}

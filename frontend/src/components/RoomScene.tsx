@@ -19,7 +19,7 @@ export default function RoomScene({ room, furniture, selectedId, onSelectFurnitu
   const gizmoBottomMargin = furniture.length > 0 ? 170 : 64;
 
   return (
-    <div className="w-full h-full" style={{ background: '#0A0D1A' }}>
+    <div className="w-full h-full" style={{ background: '#223654' }}>
       <Canvas
         shadows
         camera={{ position: [camDist, camDist * 0.75, camDist], fov: 48, near: 0.05, far: 200 }}
@@ -28,12 +28,12 @@ export default function RoomScene({ room, furniture, selectedId, onSelectFurnitu
       >
         <Suspense fallback={null}>
           {/* Ambient */}
-          <ambientLight intensity={0.5} color="#C8D8FF" />
+          <ambientLight intensity={0.72} color="#DCE8FF" />
 
           {/* Key light */}
           <directionalLight
             position={[6, 10, 6]}
-            intensity={1.4}
+            intensity={1.7}
             castShadow
             shadow-mapSize-width={2048}
             shadow-mapSize-height={2048}
@@ -47,10 +47,10 @@ export default function RoomScene({ room, furniture, selectedId, onSelectFurnitu
           />
 
           {/* Fill light */}
-          <directionalLight position={[-4, 3, -4]} intensity={0.3} color="#8899FF" />
+          <directionalLight position={[-4, 3, -4]} intensity={0.5} color="#A7B8FF" />
 
           {/* Rim light */}
-          <directionalLight position={[0, 6, -8]} intensity={0.2} color="#AABBFF" />
+          <directionalLight position={[0, 6, -8]} intensity={0.35} color="#C4CCFF" />
 
           {/* Room wireframe + floor */}
           <RoomBox room={room} />

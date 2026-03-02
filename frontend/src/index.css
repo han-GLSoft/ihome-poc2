@@ -13,17 +13,17 @@
 }
 
 :root {
-  --bg:         #0F172A;
-  --surface:    #1E293B;
-  --surface-2:  #334155;
-  --border:     rgba(255,255,255,0.08);
+  --bg:         #1B2942;
+  --surface:    #2A3C5A;
+  --surface-2:  #3A4E6F;
+  --border:     rgba(255,255,255,0.14);
   --cta:        #22C55E;
   --cta-hover:  #16A34A;
   --text:       #F8FAFC;
-  --text-muted: #94A3B8;
-  --text-dim:   #475569;
+  --text-muted: #C2D0E4;
+  --text-dim:   #9FB0C9;
   --indigo:     #6366F1;
-  --indigo-dim: rgba(99,102,241,0.15);
+  --indigo-dim: rgba(99,102,241,0.24);
 }
 
 html, body, #root {
@@ -86,7 +86,7 @@ input[type="range"]:focus::-webkit-slider-thumb {
 
 /* Glass card */
 .glass {
-  background: rgba(30,41,59,0.6);
+  background: rgba(42,60,90,0.68);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);

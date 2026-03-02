@@ -12,20 +12,50 @@ def load_furniture_db() -> list[dict]:
 
 
 def detect_room_type(items: list[dict]) -> str:
-    """Detect room type from candidate items: if any bed exists → bedroom, else living_room."""
-    for item in items:
-        if item["category"] == "bed":
-            return "bedroom"
-    return "living_room"
+    """
+    Detect dominant room type from scored candidates.
+    Uses top scored non-universal items and weighted voting to avoid always picking bedroom.
+    """
+    scoped = [it for it in items if it.get("room_type") in {"bedroom", "living_room"}]
+    if not scoped:
+        return "living_room"
+
+    top = sorted(scoped, key=lambda x: x.get("score", 0), reverse=True)[:10]
+    totals = {"bedroom": 0.0, "living_room": 0.0}
+    counts = {"bedroom": 0, "living_room": 0}
+    for it in top:
+        rt = it["room_type"]
+        totals[rt] += float(it.get("score", 0))
+        counts[rt] += 1
+
+    if totals["bedroom"] == totals["living_room"]:
+        return "bedroom" if counts["bedroom"] >= counts["living_room"] else "living_room"
+    return "bedroom" if totals["bedroom"] > totals["living_room"] else "living_room"
 
 
 def _score_item(item: dict, style: list[str], budget: float) -> float:
-    style_match = sum(1 for tag in item["style_tags"] if tag in style)
-    budget_margin = (budget - item["price"]) / budget if budget > 0 else 0
+    requested = set(style)
+    tags = set(item.get("style_tags", []))
+    style_match = len(requested & tags)
+    requested_count = max(len(requested), 1)
+    tag_count = max(len(tags), 1)
+
+    # coverage: how many selected styles are satisfied
+    style_coverage = style_match / requested_count
+    # precision: prefer items focused on selected style(s)
+    style_precision = style_match / tag_count
+    style_exact_bonus = 0.12 if style_match > 0 and style_precision >= 1.0 else 0.0
+    style_miss_penalty = -0.25 if style_match == 0 else 0.0
+
+    raw_margin = (budget - item["price"]) / budget if budget > 0 else 0
+    budget_margin = max(0.0, min(raw_margin, 1.0))
     return (
-        style_match * 0.5
-        + budget_margin * 0.2
-        + item["priority_score"] * 0.3
+        style_coverage * 0.5
+        + style_precision * 0.2
+        + style_exact_bonus
+        + style_miss_penalty
+        + budget_margin * 0.12
+        + item["priority_score"] * 0.18
     )
 
 
