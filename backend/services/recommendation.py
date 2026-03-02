@@ -40,7 +40,7 @@ def recommend(
 
     Steps:
     1. Filter by price <= budget
-    2. Filter by furniture width <= room.width AND furniture depth <= room.depth
+    2. Filter by furniture width/depth/height <= room dimensions
     3. Score each item
     4. Detect room type from top candidates
     5. Keep only items matching detected room type (or "universal")
@@ -56,6 +56,7 @@ def recommend(
         if item["price"] <= budget
         and item["width"] <= room.width
         and item["depth"] <= room.depth
+        and item["height"] <= room.height
     ]
 
     if not candidates:

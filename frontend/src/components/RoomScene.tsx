@@ -16,6 +16,7 @@ const CM = 0.01;
 
 export default function RoomScene({ room, furniture, selectedId, onSelectFurniture }: RoomSceneProps) {
   const camDist = Math.max(room.width, room.depth) * CM * 1.5;
+  const gizmoBottomMargin = furniture.length > 0 ? 170 : 64;
 
   return (
     <div className="w-full h-full" style={{ background: '#0A0D1A' }}>
@@ -73,7 +74,7 @@ export default function RoomScene({ room, furniture, selectedId, onSelectFurnitu
             dampingFactor={0.08}
           />
 
-          <GizmoHelper alignment="bottom-right" margin={[64, 64]}>
+          <GizmoHelper alignment="bottom-right" margin={[64, gizmoBottomMargin]}>
             <GizmoViewport labelColor="white" axisHeadScale={1} />
           </GizmoHelper>
         </Suspense>
