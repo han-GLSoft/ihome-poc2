@@ -3,19 +3,9 @@ import { useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import type { Mesh } from 'three';
 import type { FurnitureItem } from '../types/furniture';
+import { autoMaterial } from '../utils/materialMapper';
 
 const CM = 0.01;
-
-const CATEGORY_COLORS: Record<string, string> = {
-  bed:          '#7C6FA0',
-  wardrobe:     '#5A7A8A',
-  desk:         '#6B8A6B',
-  sofa:         '#8A6B5A',
-  coffee_table: '#7A7A5A',
-  tv_stand:     '#5A6B8A',
-  bookshelf:    '#8A7A5A',
-  lamp:         '#9A8A5A',
-};
 
 const CATEGORY_LABELS: Record<string, string> = {
   bed:          'Bed',
@@ -45,7 +35,7 @@ export default function FurnitureBox({ item, onClick, isSelected }: Props) {
   const z = item.z ?? 0;
   const y = h / 2;
 
-  const base = CATEGORY_COLORS[item.category] ?? '#6B7280';
+  const mat = autoMaterial(item);
 
   useFrame(() => {
     if (!meshRef.current) return;
@@ -67,9 +57,9 @@ export default function FurnitureBox({ item, onClick, isSelected }: Props) {
       >
         <boxGeometry args={[w, h, d]} />
         <meshStandardMaterial
-          color={isSelected ? '#818CF8' : hovered ? '#A5B4FC' : base}
-          roughness={isSelected ? 0.3 : 0.65}
-          metalness={isSelected ? 0.3 : 0.05}
+          color={isSelected ? '#818CF8' : hovered ? '#A5B4FC' : mat.color}
+          roughness={isSelected ? 0.3 : mat.roughness}
+          metalness={isSelected ? 0.3 : mat.metalness}
           transparent
           opacity={isSelected ? 1 : 0.9}
           emissive={isSelected ? '#4F46E5' : '#000000'}
